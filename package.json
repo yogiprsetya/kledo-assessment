@@ -1,0 +1,26 @@
+{
+  "name": "kledo-fe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build:js": "esbuild src/main.jsx --bundle --minify --sourcemap --outdir=assets --format=esm",
+    "build:js:watch": "esbuild src/main.jsx --bundle --sourcemap --outdir=assets --format=esm --watch",
+    "build:css": "tailwindcss -i src/index.css -o assets/index.css --minify",
+    "build:data": "node scripts/minify-json.js",
+    "build:css:watch": "tailwindcss -i src/index.css -o assets/index.css --watch",
+    "build": "npm run build:css && npm run build:data && npm run build:js",
+    "build:prod": "npm run build:css && npm run build:data && esbuild src/main.jsx --bundle --minify --outdir=assets --format=esm",
+    "build:pages": "npm run build:prod && node scripts/build-pages.js",
+    "watch": "npm run build:css:watch & npm run build:js:watch",
+    "start": "npx --yes serve -s -l 3000 ."
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "^6.30.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2",
+    "tailwindcss": "^3.4.10"
+  }
+}

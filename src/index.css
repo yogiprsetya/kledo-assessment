@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Custom focus to retain accessibility */
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  }
+
+  select:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,7 @@
+node_modules
+assets/
+*.log
+*.map
+dist/
+tmp/
+*.DS_Store
