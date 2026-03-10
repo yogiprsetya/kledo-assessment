@@ -67,6 +67,8 @@ function main() {
   ensureDir(DIST_DIR);
   const rewritten = rewriteIndex({ css, js });
   fs.writeFileSync(path.join(DIST_DIR, "index.html"), rewritten);
+  // Also write 404.html for GitHub Pages SPA fallback
+  fs.writeFileSync(path.join(DIST_DIR, "404.html"), rewritten);
   copyDir(ASSETS_DIR, path.join(DIST_DIR, "assets"));
   console.log("Built dist/ for GitHub Pages");
 }
