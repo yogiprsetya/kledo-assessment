@@ -21,6 +21,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -32,6 +35,10 @@ jobs:
 
       - name: Build site for Pages
         run: npm run build:pages
+
+      - name: List dist contents (debug)
+        run: |
+          echo "Dist tree:" && ls -la dist && echo "Assets tree:" && ls -la dist/assets || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

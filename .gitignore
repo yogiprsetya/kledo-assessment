@@ -2,6 +2,6 @@ node_modules
 assets/
 *.log
 *.map
-dist/
+# Allow dist to be built and uploaded by workflow; not ignored here
 tmp/
 *.DS_Store
