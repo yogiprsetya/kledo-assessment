@@ -348,14 +348,24 @@ function ErrorPage() {
   );
 }
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <FilterPage />,
-    loader: regionsLoader,
-    errorElement: <ErrorPage />,
-  },
-]);
+// Detect GitHub Pages project subpath and set as basename
+const detectedBase = (() => {
+  const path = window.location.pathname || "";
+  // Adjust this if repository name changes
+  return path.startsWith("/kledo-assessment") ? "/kledo-assessment" : "/";
+})();
+
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <FilterPage />,
+      loader: regionsLoader,
+      errorElement: <ErrorPage />,
+    },
+  ],
+  { basename: detectedBase },
+);
 
 createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />,
