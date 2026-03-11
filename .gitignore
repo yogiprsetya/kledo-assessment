@@ -1,8 +1,7 @@
 node_modules
-# Ignore build outputs
 assets/
-dist/
 *.log
 *.map
+dist/
 tmp/
 *.DS_Store

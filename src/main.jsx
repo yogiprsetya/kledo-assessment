@@ -74,16 +74,17 @@ function SelectField({
 // Detect GitHub Pages project subpath and set as basename
 const detectedBase = (() => {
   const path = window.location.pathname || "";
-  // Adjust this if repository name changes
   return path.startsWith("/kledo-assessment") ? "/kledo-assessment" : "/";
 })();
 
 // Loader to fetch regions data via React Router Data APIs
 async function regionsLoader() {
   // Build absolute URL anchored to the detected base to avoid dropping the repo segment
-  const base = detectedBase.endsWith("/") ? detectedBase.slice(0, -1) : detectedBase;
+  const base = detectedBase.endsWith("/")
+    ? detectedBase.slice(0, -1)
+    : detectedBase;
   const assetUrl = `${base}/assets/data/indonesia_regions.json`;
-  const res = await fetch(assetUrl, { cache: "no-cache" });
+  const res = await fetch(assetUrl);
   if (!res.ok) {
     throw new Response("Gagal memuat data wilayah", { status: res.status });
   }
@@ -357,8 +358,6 @@ function ErrorPage() {
     </div>
   );
 }
-
-// detectedBase is defined above
 
 const router = createBrowserRouter(
   [
