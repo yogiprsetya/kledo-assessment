@@ -1,7 +1,8 @@
 node_modules
+# Ignore build outputs
 assets/
+dist/
 *.log
 *.map
-# Allow dist to be built and uploaded by workflow; not ignored here
 tmp/
 *.DS_Store
